@@ -190,7 +190,9 @@ Calculate the error for layer 1.By analyzing the value of weights in layer 1,the
   hidden_state, output = neural_network.think(array(input_test))
   print(output)
  ``` 
-This is the neural network to predict Diabetes.To increase the accuracy of the network we can either increase the number of hidden layers or the input neurons in each layer.Increasing the size of training data also improves the accuracy of the model.        
+This is the neural network to predict Diabetes.To increase the accuracy of the network we can either increase the number of hidden layers or the input neurons in each layer.Increasing the size of training data also improves the accuracy of the model.   
+
+~Mokshda Sharma
    
         
         
