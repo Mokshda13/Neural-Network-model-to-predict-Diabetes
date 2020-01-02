@@ -69,6 +69,12 @@ with open(r'C:\Users\hp\Downloads\diabetes.csv') as csvDataFile:
         denormal = v*(max(preg)-min(preg)) + min(preg)
         return denormal
    ```
+  Usig for loop,traverse over the length of the array.
+  ```ruby
+   for i in range (0, len(preg)):
+    a = nor_denor_preg(preg[i])
+    preg[i] = a
+  ```
 The normalization and denormalization functions for rest of the parameters are created in a similar manner<br/>
    
 Then initialize input and output arrays with random data and append the data from csv file as elements of the arrays inside NumPy array.
