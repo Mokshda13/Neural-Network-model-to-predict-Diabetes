@@ -6,7 +6,7 @@ Data used to train this model: https://datahub.io/machine-learning/diabetes
 #### Architecture:
 Input Neurons:8<br/>
 (Input parameters:NumberOfPregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age)<br/>
-Output Neurons:1(Diabeteic/Non-diabeteic)<br/>
+Output Neurons:1(Diabetic/Non-diabetic)<br/>
 Hidden Layers:1<br/>
 Activation Function:Sigmoid<br/>
 
@@ -102,7 +102,7 @@ class NeuralNetwork():
         self.layer1 = layer1
         self.layer2 = layer2
  ```
- Sigmoid Function is used as activation function to train the network.It is a S shaped curve whose value lies between 0 and 1.Pass the weighted sum of the inputs through this function to normalize them between 0 ad 1.
+Sigmoid Function is used as activation function to train the network.It is a S shaped curve whose value lies between 0 and 1.Pass the weighted sum of the inputs through this function to normalize them between 0 ad 1.
  ```ruby
  def __sigmoid(self, x):
         return 1 / (1 + exp(-x))
@@ -112,21 +112,21 @@ class NeuralNetwork():
  def __sigmoid_derivative(self, x):
         return x*(1 - x)
  ```
- Train the neural network by backpropagation in which the weights are repeatedly adjusted to minimize the difference between actual output and desired output.
+Train the neural network by backpropagation in which the weights are repeatedly adjusted to minimize the difference between actual output and desired output.
  ```ruby
  def train(self, training_set_inputs, training_set_outputs, number_of_training_iterations):
         for iteration in range(number_of_training_iterations):
  ```
- Pass the traiig set through neural network:
+ Pass the training set through neural network:
  ```ruby
  output_from_layer_1, output_from_layer_2 = self.think(training_set_inputs)
  ```
- Calculate the error for output layer by taking the difference between actual and desired output and define the derivative of the sigmoid function
+Calculate the error for output layer by taking the difference between actual and desired output and define the derivative of the sigmoid function
  ```ruby
  layer2_error = training_set_outputs - output_from_layer_2
  layer2_delta = layer2_error * self.__sigmoid_derivative(output_from_layer_2)
  ```
- Calculate the error for layer 1.By analyzing the value of weights in layer 1,the contribution of layer 1 to the error i layer 2 is found
+Calculate the error for layer 1.By analyzing the value of weights in layer 1,the contribution of layer 1 to the error i layer 2 is found
  ```ruby
   layer1_error = layer2_delta.dot(self.layer2.synaptic_weights.T)
   layer1_delta = layer1_error * self.__sigmoid_derivative(output_from_layer_1)
@@ -165,7 +165,7 @@ class NeuralNetwork():
  ```ruby
   neural_network = NeuralNetwork(layer1, layer2)
   ```
-  Train the neural network using the training set.Doing it 6,00,000 times and make small adjustments each time:
+  Train the neural network using the training set,doing it 6,00,000 times and making small adjustments each time:
  ```ruby
   neural_network.train(training_set_inputs, training_set_outputs, 60000)
  ```
@@ -185,12 +185,12 @@ class NeuralNetwork():
     input_test = np.asarray(test, dtype=np.float32)
     out_plot_arr=np.array([[.5],[.5],[.2],[.5],[.5],[.2],[.5],[.5],[.2],[.5],[.9]])
 ```
- finally print the output
+ Print the output
  ```ruby
   hidden_state, output = neural_network.think(array(input_test))
   print(output)
  ``` 
-This is the neural network to predict Diabetes.To increase the accuracy of the network we can either increase the number of hidden layers of the input neurons in each layers.Increasing the size of training data also improves the accuracy of the model.        
+This is the neural network to predict Diabetes.To increase the accuracy of the network we can either increase the number of hidden layers or the input neurons in each layer.Increasing the size of training data also improves the accuracy of the model.        
    
         
         
