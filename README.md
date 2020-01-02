@@ -5,22 +5,22 @@ Data used to train this model: https://datahub.io/machine-learning/diabetes
 
 #### Architecture:
 Input Neurons:8<br/>
-(Input parameters:NumberOfPregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age)<br/>
+(Input parameters:NumberOfPregnancies, Glucose, BloodPressure, SkinThickness, Insulin, BMI, DiabetesPedigreeFunction, Age)<br/>
 Output Neurons:1(Diabetic/Non-diabetic)<br/>
 Hidden Layers:1<br/>
 Activation Function:Sigmoid<br/>
 
-This Neural Network is feedforward and fully connected.Every node in a given layer is fully connected to every node in next layer.
+This Neural Network is feedforward and fully connected. Every node in a given layer is fully connected to every node in next layer.
 
 
 ## Flow of Program
 
 #### Files:
-There are two files,one containing the neural network and other containing the dataset to train the network.The file Diabetes_diagnosis_nn.py contains the neural network.
+There are two files,one containing the neural network and other containing the dataset to train the network. The file Diabetes_diagnosis_nn.py contains the neural network.
  
  
 #### Introduction:
-The Neural Network is programmed in Python mainly using the NumPy library.NumPy(Numerical Python) consists of  Mutidimensional array objects and a collection of routines for processing those arrays.<br/>
+The Neural Network is programmed in Python mainly using the NumPy library. NumPy(Numerical Python) consists of  Mutidimensional array objects and a collection of routines for processing those arrays.<br/>
 
 diabetes_diagnosis_nn.py code breakdown:
 
@@ -95,7 +95,7 @@ with open(r'C:\Users\hp\Downloads\outputNew.csv.xlsx') as csvDataFile:
         out_arr[count] = temp_arr
         count = count + 1
 ```   
-Define function to assign Weights to the layers inside neural network.This fuction randomly assigns weights.
+Define function to assign Weights to the layers inside neural network. This fuction randomly assigns weights.
 ```ruby
 class NeuronLayer():
     def __init__(self, number_of_neurons, number_of_inputs_per_neuron):
@@ -108,12 +108,12 @@ class NeuralNetwork():
         self.layer1 = layer1
         self.layer2 = layer2
  ```
-Sigmoid Function is used as activation function to train the network.It is a S shaped curve whose value lies between 0 and 1.Pass the weighted sum of the inputs through this function to normalize them between 0 ad 1.
+Sigmoid Function is used as activation function to train the network. It is a S shaped curve whose value lies between 0 and 1. Pass the weighted sum of the inputs through this function to normalize them between 0 ad 1.
  ```ruby
  def __sigmoid(self, x):
         return 1 / (1 + exp(-x))
  ```
- Define the derivative of sigmoid function.This function is differentiable everywhere on the curve.
+ Define the derivative of sigmoid function. This function is differentiable everywhere on the curve.
  ```ruby
  def __sigmoid_derivative(self, x):
         return x*(1 - x)
@@ -132,7 +132,7 @@ Calculate the error for output layer by taking the difference between actual and
  layer2_error = training_set_outputs - output_from_layer_2
  layer2_delta = layer2_error * self.__sigmoid_derivative(output_from_layer_2)
  ```
-Calculate the error for layer 1.By analyzing the value of weights in layer 1,the contribution of layer 1 to the error i layer 2 is found
+Calculate the error for layer 1. By analyzing the value of weights in layer 1,the contribution of layer 1 to the error i layer 2 is found
  ```ruby
   layer1_error = layer2_delta.dot(self.layer2.synaptic_weights.T)
   layer1_delta = layer1_error * self.__sigmoid_derivative(output_from_layer_1)
@@ -171,7 +171,7 @@ Calculate the error for layer 1.By analyzing the value of weights in layer 1,the
  ```ruby
   neural_network = NeuralNetwork(layer1, layer2)
   ```
-  Train the neural network using the training set,doing it 6,00,000 times and making small adjustments each time:
+  Train the neural network using the training set, doing it 6,00,000 times and making small adjustments each time:
  ```ruby
   neural_network.train(training_set_inputs, training_set_outputs, 60000)
  ```
@@ -196,7 +196,7 @@ Calculate the error for layer 1.By analyzing the value of weights in layer 1,the
   hidden_state, output = neural_network.think(array(input_test))
   print(output)
  ``` 
-This is the neural network to predict Diabetes.To increase the accuracy of the network we can either increase the number of hidden layers or the input neurons in each layer.Increasing the size of training data also improves the accuracy of the model.   
+This is the neural network to predict Diabetes. To increase the accuracy of the network we can either increase the number of hidden layers or the input neurons in each layer.  Increasing the size of training data also improves the accuracy of the model.   
 
 ~Mokshda Sharma
    
