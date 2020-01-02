@@ -5,7 +5,7 @@ Data used to train this model: https://datahub.io/machine-learning/diabetes
 
 #### Architecture:
 Input Neurons:8<br/>
-Input parameters:NumberOfPregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age<br/>
+(Input parameters:NumberOfPregnancies,Glucose,BloodPressure,SkinThickness,Insulin,BMI,DiabetesPedigreeFunction,Age)<br/>
 Output Neurons:1(Diabeteic/Non-diabeteic)<br/>
 Hidden Layers:1<br/>
 Activation Function:Sigmoid<br/>
@@ -161,7 +161,36 @@ class NeuralNetwork():
  layer1 = NeuronLayer(6, 8)
  layer2 = NeuronLayer(1,6)
  ```
-        
+ Combine the layers to create a neural network:
+ ```ruby
+  neural_network = NeuralNetwork(layer1, layer2)
+  ```
+  Train the neural network using the training set.Doing it 6,00,000 times and make small adjustments each time:
+ ```ruby
+  neural_network.train(training_set_inputs, training_set_outputs, 60000)
+ ```
+ Print new synaptic weights after training:
+ ```ruby
+ neural_network.print_weights()
+ ```
+ Test the neural network with a new situation:
+ ```ruby
+  print( "Stage 3) Considering a new situation --- ")
+    
+    test = []
+    with open(r'C:\Users\hp\Downloads\diabetes.csv') as csvfile:
+        reader = csv.reader(csvfile, quoting=csv.QUOTE_NONNUMERIC) # change contents to floats
+        for row in reader: # each row is a list
+            test.append(row)
+    input_test = np.asarray(test, dtype=np.float32)
+    out_plot_arr=np.array([[.5],[.5],[.2],[.5],[.5],[.2],[.5],[.5],[.2],[.5],[.9]])
+```
+ finally print the output
+ ```ruby
+  hidden_state, output = neural_network.think(array(input_test))
+  print(output)
+ ``` 
+This is the neural network to predict Diabetes.To increase the accuracy of the network we can either increase the number of hidden layers of the input neurons in each layers.Increasing the size of training data also improves the accuracy of the model.        
    
         
         
